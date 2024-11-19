@@ -1,0 +1,85 @@
+import math
+
+# Function for Newton's Second Law: F = ma
+def calculate_force(mass, acceleration):
+    return mass * acceleration
+
+# Function for Kinematic Equation: v = u + at
+def calculate_velocity(initial_velocity, acceleration, time):
+    return initial_velocity + (acceleration * time)
+
+# Function for Gravitational Force: F = G * (m1 * m2) / r^2
+def gravitational_force(m1, m2, distance):
+    G = 6.67430e-11  # Gravitational constant
+    return (G * m1 * m2) / (distance ** 2)
+
+# Function for Ohm's Law: V = IR
+def calculate_voltage(current, resistance):
+    return current * resistance
+
+# Function for Work Done: W = F * d * cos(θ)
+def work_done(force, displacement, angle_deg):
+    angle_rad = math.radians(angle_deg)
+    return force * displacement * math.cos(angle_rad)
+
+# Main program with menu
+def main():
+    while True:
+        print("\nSelect a physics equation to solve:")
+        print("1. Newton's Second Law (F = ma)")
+        print("2. Kinematic Equation (v = u + at)")
+        print("3. Gravitational Force (F = G * m1 * m2 / r^2)")
+        print("4. Ohm's Law (V = IR)")
+        print("5. Work Done (W = F * d * cos(θ))")
+        print("6. Exit")
+
+        choice = input("\nEnter your choice (1-6): ")
+
+        if choice == '1':
+            # Newton's Second Law: F = ma
+            mass = float(input("Enter the mass (kg): "))
+            acceleration = float(input("Enter the acceleration (m/s²): "))
+            force = calculate_force(mass, acceleration)
+            print(f"The force is: {force} Newtons")
+
+        elif choice == '2':
+            # Kinematic Equation: v = u + at
+            initial_velocity = float(input("Enter the initial velocity (m/s): "))
+            acceleration = float(input("Enter the acceleration (m/s²): "))
+            time = float(input("Enter the time (s): "))
+            final_velocity = calculate_velocity(initial_velocity, acceleration, time)
+            print(f"The final velocity is: {final_velocity} m/s")
+
+        elif choice == '3':
+            # Gravitational Force: F = G * m1 * m2 / r^2
+            m1 = float(input("Enter the mass of the first object (kg): "))
+            m2 = float(input("Enter the mass of the second object (kg): "))
+            distance = float(input("Enter the distance between the objects (m): "))
+            force = gravitational_force(m1, m2, distance)
+            print(f"The gravitational force is: {force} Newtons")
+
+        elif choice == '4':
+            # Ohm's Law: V = IR
+            current = float(input("Enter the current (A): "))
+            resistance = float(input("Enter the resistance (Ω): "))
+            voltage = calculate_voltage(current, resistance)
+            print(f"The voltage is: {voltage} Volts")
+
+        elif choice == '5':
+            # Work Done: W = F * d * cos(θ)
+            force = float(input("Enter the force (N): "))
+            displacement = float(input("Enter the displacement (m): "))
+            angle_deg = float(input("Enter the angle between force and displacement (degrees): "))
+            work = work_done(force, displacement, angle_deg)
+            print(f"The work done is: {work} Joules")
+
+        elif choice == '6':
+            print("Exiting the program. Goodbye!")
+            break  # Exit the loop and end the program
+
+        else:
+            print("Invalid choice, please try again.")
+
+# Run the main program
+if __name__ == "__main__":
+    main()
